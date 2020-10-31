@@ -1,0 +1,297 @@
+/*
+ * DOM-CovX Style sheet
+ * Version 0.0.1 October 2020
+ */
+
+/*
+   CSS properties combined with var() and calc() are used to 'parameterize' many style elements.
+*/
+
+html {
+   --domcovx-canvas-min-width: 1250px;
+
+   --domcovx-font-color: darkslategray;
+   --domcovx-font-size: 13px;
+   --domcovx-font-weight: 600;
+   --domcovx-border-color: slategray;
+
+   --domcovx-padding: 10px;
+   --domcovx-scrollbar-width: 20px;
+
+   --domcovx-ribbon-height: 100px;
+
+   --domcovx-hsection-width-left: 35%;
+   --domcovx-hsection-width-center: 15%;
+
+   --domcovx-hsection-min-width-left: calc( var(--domcovx-hsection-width-left)*(var(--domcovx-canvas-min-width) - var(--domcovx-scrollbar-width)) - var(--domcovx-padding));
+   --domcovx-hsection-min-width-center: calc( var(--domcovx-hsection-width-center)*(var(--domcovx-canvas-min-width) - var(--domcovx-scrollbar-width)) - var(--domcovx-padding) );
+   --domcovx-hsection-min-width-right: calc( (100% - var(--domcovx-hsection-width-left) - var(--domcovx-hsection-width-center))*(var(--domcovx-canvas-min-width) - var(--domcovx-scrollbar-width)) - var(--domcovx-padding) );
+
+   --domcovx-listrow-option-width: 70px;
+
+   --domcovx-message-box-width: 666px;
+   --domcovx-message-box-height: 300px;
+}
+
+div#domcovx-canvas {
+   position: relative;
+   width: 100%;
+   min-width: var(--domcovx-canvas-min-width);
+   overflow-x: hidden;
+   overflow-y: hidden;
+
+   color: var(--domcovx-font-color);
+   font-weight: var(--domcovx-font-weight);
+   font-size: var(--domcovx-font-size);
+
+   background-color: transparent;
+}
+
+div#domcovx-ribbon {
+   position: absolute;
+   top: var(--domcovx-padding);
+   left: 0;
+   /*
+   padding-top: var(--domcovx-padding);
+   padding-right: var(--domcovx-padding);
+   */
+   height: var(--domcovx-ribbon-height);
+   width: calc( 100% - var(--domcovx-padding) );
+   background-color: darkseagreen;
+}
+
+div.domcovx-hsection {
+   position: absolute;
+   top: calc( var(--domcovx-ribbon-height) + 2*var(--domcovx-padding) );
+}
+
+div#domcovx-hsection-left {
+   left: 0;
+   width: calc(var(--domcovx-hsection-width-left) - var(--domcovx-padding));
+   min-width: calc(var(--domcovx-hsection-min-width-left) - var(--domcovx-padding));
+   background-color: honeydew;
+}
+
+div#domcovx-hsection-center {
+   left: calc( var(--domcovx-hsection-width-left) + var(--domcovx-padding) );
+   width: calc(var(--domcovx-hsection-width-center) - var(--domcovx-padding));
+   min-width: calc(var(--domcovx-hsection-min-width-center) - var(--domcovx-padding));
+   background-color: lightsalmon;
+}
+
+div#domcovx-hsection-right {
+   left: calc( var(--domcovx-hsection-width-left) + var(--domcovx-hsection-width-center) );
+   width: calc( 100% - var(--domcovx-hsection-width-left) - var(--domcovx-hsection-width-center) - var(--domcovx-padding) );
+   min-width: calc(var(--domcovx-hsection-min-width-right) - var(--domcovx-padding));
+   background-color: lightgoldenrodyellow;
+}
+
+div#domcovx-messages {
+   position: absolute;
+   /*
+   bottom: 0;
+   left: 0;
+    */
+   border: 2px solid var(--domcovx-border-color);
+   padding: var(--domcovx-padding);
+   width: var(--domcovx-message-box-width);
+   height: var(--domcovx-message-box-height);
+   background-color: rgba(245, 255, 250, 0.85); /* semi-transparent 'mintcream' */
+   z-index: 100;
+}
+
+div.domcovx-scrollable-content-header {
+   width: 100%;
+   float: left;
+   color: linen;
+   background-color: var(--domcovx-border-color);
+   height: 2rem;
+   line-height: 2rem;
+   padding-left: var(--domcovx-padding);
+   padding-right: calc( var(--domcovx-padding) + var(--domcovx-scrollbar-width) );
+   border: 2px solid var(--domcovx-border-color);
+}
+
+/*
+
+ scrollable content structure ( x = number of options ):
+
+ div.domcovx-scrollable-content
+
+    div.domcovx-listrow
+        div.domcovx-listrow-description-x
+        div.domcovx-listrow-options-x
+            div.domcovx-listrow-options-input
+            div.domcovx-listrow-options-input
+            ...
+
+    div.domcovx-listrow
+        div.domcovx-listrow-description-x
+        div.domcovx-listrow-options-x
+            div.domcovx-listrow-options-input
+            div.domcovx-listrow-options-input
+            ...
+
+     ... etc ...
+
+ */
+
+div.domcovx-scrollable-content {
+   width: 100%;
+   float: left;
+   background-color: white;
+   height: 400px;
+   padding-left: var(--domcovx-padding);
+   padding-right: var(--domcovx-padding);
+   border: 2px solid var(--domcovx-border-color);
+   overflow: auto ;
+}
+
+div.domcovx-listrow {
+   width: 100%;
+   float: left;
+   clear: both;
+   height: 2rem;
+   line-height: 2rem;
+   border-bottom: 1px solid lightgray;
+}
+
+div.domcovx-listrow-description-2, div.domcovx-listrow-description-3 {
+   float: left;
+   clear: left;
+   white-space: nowrap;
+   -ms-text-overflow: ellipsis;
+   text-overflow: ellipsis;
+   overflow: hidden;
+}
+
+div.domcovx-listrow-description-2 {
+   max-width: calc( 100% - 2 * var(--domcovx-listrow-option-width) - var(--domcovx-padding) );
+}
+
+div.domcovx-listrow-description-3 {
+   max-width: calc( 100% - 3 * var(--domcovx-listrow-option-width) - var(--domcovx-padding) );
+}
+
+div.domcovx-listrow-options-2, div.domcovx-listrow-options-3 {
+   display: table;
+   float: right;
+   clear: right;
+}
+
+div.domcovx-listrow-options-2 {
+   width: calc( 2 * var(--domcovx-listrow-option-width) );
+}
+
+div.domcovx-listrow-options-3 {
+   width: calc( 3 * var(--domcovx-listrow-option-width) );
+}
+
+div.domcovx-listrow-options-input {
+   display: table-cell;
+   width: var(--domcovx-listrow-option-width);
+   text-align: center;
+}
+
+div.domcovx-listrow div.domcovx-listrow-options-input:hover {
+   background-color: lightgray;
+   cursor: pointer;
+}
+
+
+/*
+  'float-...' styles are for a generic div that occupies 100% of container width
+ */
+
+div.domcovx-float-row {
+   width: 100%;
+   float: left;
+   clear: both;
+   margin-bottom: var(--domcovx-padding);
+}
+
+div.domcovx-float-left {
+   float: left;
+   margin-right: var(--domcovx-padding);
+}
+
+div.domcovx-float-right {
+   float: right;
+   margin-left: var(--domcovx-padding);
+}
+
+
+div.domcovx-vertical-radio-group {
+   margin-top: var(--domcovx-padding);
+   float: right;
+   width: 70%;
+}
+
+div.domcovx-vertical-radio-group-label {
+   font-weight: 800;
+   margin-bottom: 0.25rem;
+}
+
+/* a tweek to properly align button with label */
+div.domcovx-vertical-radio-group-options input[type="radio"]{
+   display: inline-block;
+   margin-top: -2px;
+   vertical-align: middle;
+   margin-right: 3px;
+}
+
+div.domcovx-vertical-radio-group-options label {
+   display: inline-block;
+   margin: 0; /* REDCap puts a 0.5rem bottom margin on labels */
+}
+
+span.domcovx-list-field_name {
+   font-weight: 800;
+}
+
+span.domcovx-list-element_label {
+   color: indianred;
+}
+
+span.domcovx-list-domain {
+   color: cornflowerblue;
+}
+
+span.domcovx-list-description {
+   color: mediumseagreen;
+}
+
+div.domcovx-list-bupkis {
+   width: 100%;
+   margin-top: var(--domcovx-padding);
+   color: slategray;
+}
+
+button.domcovx-search-button {
+   float: right;
+   height: 2.5rem;
+   width: 100px;
+   border: 2px solid indianred;
+   background-color: indianred;
+   color: whitesmoke;
+   font-weight: 600;
+}
+
+input[id="domcovx-search-input"] {
+   float: left;
+   height: 2.5rem;
+   border: 2px solid var(--domcovx-border-color);
+   padding-left: var(--domcovx-padding);
+   padding-right: var(--domcovx-padding);
+   width: calc( 100% - var(--domcovx-padding) - 100px);
+   background-color: white;
+   font-weight: 600;
+}
+
+/*
+ * While developing the layout, we need to differentially remove the dev colors
+ */
+
+div.domcovx-transparent-background {
+   background-color: transparent !important;
+}

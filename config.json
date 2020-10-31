@@ -1,0 +1,99 @@
+{
+  "name": "DOM-CovX support module - explorations",
+
+  "namespace": "Yale\\DOMCovXplorations",
+
+  "description": "A place to work out solutions as we go.",
+
+  "authors": [
+    {
+      "name": "Peter Charpentier",
+      "email": "redcap@yale.edu",
+      "institution": "Yale University"
+    }
+  ],
+
+  "versions": [
+    {
+      "number": "0.0.1",
+      "date": "2020-10-12",
+      "description": "and off we go",
+      "comments": ""
+    }
+  ],
+
+  "permissions": [
+    "redcap_data_entry_form",
+    "redcap_module_link_check_display"
+  ],
+
+  "links": {
+    "project": [
+      {
+        "name": "DOM-CovXPlorator: layout",
+        "icon": "fas fa-snowplow",
+        "url": "plugins/domcovx_workbench.php"
+      },
+      {
+        "name": "DOM-CovXPlorator: import DD",
+        "icon": "fas fa-file-import",
+        "url": "plugins/domcovx_data_dictionary_import.php"
+      }
+    ]
+  },
+
+  "no-auth-pages": [
+  ],
+
+  "system-settings": [
+  ],
+
+  "project-settings": [
+    {
+      "key": "repo-project-host",
+      "name": "Repository project host <br /><em>example</em>: https://redcap.trantor.gov&nbsp;",
+      "required": true,
+      "type": "text"
+    },
+    {
+      "key": "repo-project-number",
+      "name": "Repository project number (PID)",
+      "required": true,
+      "type": "text"
+    },
+    {
+      "key": "repo-project-apitoken",
+      "name": "Repository project API token",
+      "required": true,
+      "type": "text"
+    },
+    {
+      "key": "metadata-project-host",
+      "name": "Metadata project host <br /><em>example</em>: https://redcap.trantor.gov&nbsp;",
+      "required": true,
+      "type": "text"
+    },
+    {
+      "key": "metadata-project-number",
+      "name": "Metadata project number (PID)",
+      "required": true,
+      "type": "text"
+    },
+    {
+      "key": "metadata-project-apitoken",
+      "name": "Metadata project API token",
+      "required": true,
+      "type": "text"
+    }
+  ],
+
+  "crons":[
+  ],
+
+  "compatibility": {
+    "php-version-min": "7.0.33",
+    "redcap-version-min": "10.2.3"
+  },
+
+  "framework-version": 5
+}
