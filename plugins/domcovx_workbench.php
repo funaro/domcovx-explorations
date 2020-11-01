@@ -39,7 +39,6 @@ $HtmlPage->ProjectHeader();
          The layout follows that proposed for EMs 2 and 3.
          <br />The background colors are just so that the boundaries of the sections can be seen.
          The sections will all have the same background color (transparent) once we start coding for real.
-         <br />Try it out! Resize the browser window, click on the list, ...
       </div>
 
    </div>
