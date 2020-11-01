@@ -35,10 +35,14 @@ $HtmlPage->ProjectHeader();
       </div>
 
       <div class="domcovx-float-row">
-         Welcome to the DOM-CovXplorations page. I am using this page to work out layout and style options.
-         The layout follows that proposed for EMs 2 and 3.
-         <br />The background colors are just so that the boundaries of the sections can be seen.
-         The sections will all have the same background color (transparent) once we start coding for real.
+         <p>
+            Welcome to the DOM-CovXplorations page. I am using this page to work out layout and style options.
+            The layout follows that proposed for EMs 2 and 3.
+         </p>
+         <p>
+            The background colors are just so that the boundaries of the sections can be seen.
+            The sections will all have the same background color (transparent) once we start coding for real.
+         </p>
       </div>
 
    </div>
